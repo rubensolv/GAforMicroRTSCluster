@@ -17,6 +17,12 @@ public class RunTests {
 		//p.printWithValue();
 		//p = Population.getInitialPopulation(new Integer(100));
 		//p.print();
+		
+		//################################################################33
+		//sandBOX
+		
+		
+		//################################################################33
 	
 		//aplicando o Algoritmo Genético
 		//criei uma classe para controlar a execução do GA.
@@ -28,7 +34,7 @@ public class RunTests {
 		//rodamos o GA
 		Population popFinal = ga.run(fEval);
 		
-		popFinal.print();
+		popFinal.printWithValue();
 		
 		//Fase 6 - mostrar os mais aptos na população final
 	}
