@@ -75,11 +75,10 @@ public class Population {
 	}
 	
 	
-	//escrever método que gera população inicial baseado em 1 único script
 	/**
-	 * 
-	 * @param gene
-	 * @return
+	 * Cria uma população inicial com os genes dos cromossomos iguais ao passado por parametros
+	 * @param gene Integer que será utilizado como gene dos cromossomos
+	 * @return uma população com Key = Chromosome e Values = 0
 	 */
 	public static Population getInitialPopulation(Integer gene){
 		HashMap<Chromosome, BigDecimal> newChromosomes = new HashMap<>();
@@ -97,7 +96,6 @@ public class Population {
 		Population pop = new Population(newChromosomes);
 		return pop;
 	}
-	//escrever método que gera população inicial utilizando um dataset fechado.
 	
 	
 }

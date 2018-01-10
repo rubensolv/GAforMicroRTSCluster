@@ -11,6 +11,8 @@ public class RunTests {
 		//teste de inicialização de população
 		Population p = Population.getInitialPopulation(ConfigurationsGA.SIZE_POPULATION);
 		p.print();
+		p = Population.getInitialPopulation(new Integer(100));
+		p.print();
 		
 	}
 
