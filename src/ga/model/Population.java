@@ -1,0 +1,103 @@
+package ga.model;
+
+import java.math.BigDecimal;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Random;
+
+import ga.config.ConfigurationsGA;
+
+public class Population {
+	
+	static Random rand = new Random();
+	/**
+	 * A população será representada como um Map visando podermos armazenar como Value 
+	 * o valor dado pela avaliação a cada cromossomo da população e como Key o Cromossomo.
+	 */
+	private HashMap<Chromosome, BigDecimal> Chromosomes ;
+
+	
+	
+	public Population(){
+		this.Chromosomes = new HashMap<>();
+	}
+	
+
+	public Population(HashMap<Chromosome, BigDecimal> chromosomes) {
+		super();
+		Chromosomes = chromosomes;
+	}
+
+
+
+	public HashMap<Chromosome, BigDecimal> getChromosomes() {
+		return Chromosomes;
+	}
+
+	public void setChromosomes(HashMap<Chromosome, BigDecimal> chromosomes) {
+		Chromosomes = chromosomes;
+	}
+	
+	public void addChromosome(Chromosome chromosome){
+		this.Chromosomes.put(chromosome, BigDecimal.ZERO);
+	}	
+	
+	public void print(){
+		System.out.println("-- Population --");
+		for(Chromosome c : Chromosomes.keySet()){
+			c.print();
+		}
+		System.out.println("-- Population --");
+	}
+	
+	//static methods
+	
+	/**
+	 * Cria uma população inicial gerada randomicamente.
+	 * @param size Tamanho limite da população
+	 * @return uma população com Key = Chromosome e Values = 0
+	 */
+	public static Population getInitialPopulation(int size){
+		HashMap<Chromosome, BigDecimal> newChromosomes = new HashMap<>();
+		
+		Chromosome tChom;
+		for (int i = 0; i < size; i++) {
+			//gerar o novo cromossomo com base no tamanho
+			tChom = new Chromosome();
+			for (int j = 0; j < ConfigurationsGA.SIZE_CHROMOSOME; j++) {
+				tChom.addGene(rand.nextInt(ConfigurationsGA.QTD_SCRIPTS));
+			}
+			newChromosomes.put(tChom, BigDecimal.ZERO);
+		}
+		
+		Population pop = new Population(newChromosomes);
+		return pop;
+	}
+	
+	
+	//escrever método que gera população inicial baseado em 1 único script
+	/**
+	 * 
+	 * @param gene
+	 * @return
+	 */
+	public static Population getInitialPopulation(Integer gene){
+		HashMap<Chromosome, BigDecimal> newChromosomes = new HashMap<>();
+		
+		Chromosome tChom;
+		for (int i = 0; i < ConfigurationsGA.SIZE_POPULATION; i++) {
+			//gerar o novo cromossomo com base no tamanho
+			tChom = new Chromosome();
+			for (int j = 0; j < ConfigurationsGA.SIZE_CHROMOSOME; j++) {
+				tChom.addGene(gene);
+			}
+			newChromosomes.put(tChom, BigDecimal.ZERO);
+		}
+		
+		Population pop = new Population(newChromosomes);
+		return pop;
+	}
+	//escrever método que gera população inicial utilizando um dataset fechado.
+	
+	
+}
