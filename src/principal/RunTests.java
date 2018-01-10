@@ -14,6 +14,7 @@ public class RunTests {
 		//teste de inicialização de população
 		//Population p = Population.getInitialPopulation(ConfigurationsGA.SIZE_POPULATION);
 		//p.print();
+		//p.printWithValue();
 		//p = Population.getInitialPopulation(new Integer(100));
 		//p.print();
 	
@@ -25,8 +26,11 @@ public class RunTests {
 		RatePopulation fEval = new RoundRobinEval();
 		
 		//rodamos o GA
-		ga.run(fEval);
+		Population popFinal = ga.run(fEval);
 		
+		popFinal.print();
+		
+		//Fase 6 - mostrar os mais aptos na população final
 	}
 
 }

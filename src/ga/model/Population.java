@@ -50,6 +50,15 @@ public class Population {
 		System.out.println("-- Population --");
 	}
 	
+	public void printWithValue(){
+		System.out.println("-- Population --");
+		for(Chromosome c : Chromosomes.keySet()){
+			c.print();
+			System.out.println("Value = "+ this.Chromosomes.get(c));
+		}
+		System.out.println("-- Population --");
+	}
+	
 	//static methods
 	
 	/**
