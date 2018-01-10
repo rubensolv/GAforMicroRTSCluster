@@ -9,4 +9,6 @@ public final class ConfigurationsGA {
 	public final static int SIZE_POPULATION = 10;
 	//tempo, em horas, que o GA será executado
 	public final static int TIME_GA_EXEC = 1;
+	//Total de jobs que serão enviados ao cluster
+	public final static int NUMBER_JOBS = 33;
 }
