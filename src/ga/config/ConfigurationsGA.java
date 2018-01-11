@@ -6,7 +6,7 @@ public final class ConfigurationsGA {
 	//tamanho fixo do cromossomo
 	public final static int SIZE_CHROMOSOME = 4;
 	//tamanho fixo da população
-	public final static int SIZE_POPULATION = 10;
+	public final static int SIZE_POPULATION = 5;
 	//tempo, em horas, que o GA será executado
 	public final static int TIME_GA_EXEC = 1;
 	//Total de jobs que serão enviados ao cluster

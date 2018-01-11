@@ -35,5 +35,32 @@ public class Chromosome {
 		}
 		System.out.println("");
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((Genes == null) ? 0 : Genes.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Chromosome other = (Chromosome) obj;
+		if (Genes == null) {
+			if (other.Genes != null)
+				return false;
+		} else if (!Genes.equals(other.Genes))
+			return false;
+		return true;
+	}
+	
+	
 	
 }

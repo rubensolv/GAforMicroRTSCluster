@@ -20,10 +20,20 @@ public class RunTests {
 		
 		//################################################################33
 		//sandBOX
+		/* Testes Rubens validação do RoundRobin
+		Population p = Population.getInitialPopulation(ConfigurationsGA.SIZE_POPULATION);
+		p.print();
+		RatePopulation fEval = new RoundRobinEval();
 		
 		
+		p = fEval.evalPopulation(p);
+		
+		System.out.println("\n Pos avaliação");
+		p.printWithValue();
+		*/
 		//################################################################33
 	
+		
 		//aplicando o Algoritmo Genético
 		//criei uma classe para controlar a execução do GA.
 		RunGA ga = new RunGA();
@@ -37,6 +47,8 @@ public class RunTests {
 		popFinal.printWithValue();
 		
 		//Fase 6 - mostrar os mais aptos na população final
+		 
+		
 	}
 
 }

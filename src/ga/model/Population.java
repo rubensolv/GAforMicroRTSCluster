@@ -2,7 +2,6 @@ package ga.model;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Random;
 
 import ga.config.ConfigurationsGA;
