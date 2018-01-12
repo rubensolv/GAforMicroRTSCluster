@@ -24,7 +24,7 @@ public class ManagerJob {
 	public ManagerJob(){
 		linha1 = "#!/bin/bash";
 		linha2 = "cd /storage1/dados/es91661/ExecAIGA";
-		ultimaLinha = "(qsub -l nodes=1:ppn=5,mem=5gb -v TUPIA1=$i,TUPIA2=$t bFixedJob.sh) &";
+		ultimaLinha = "(qsub -l nodes=1:ppn=5,mem=5gb -v TUPIA1=$i,TUPIA2=$t,ID=$m bFixedJob.sh) &";
 	}
 	
 	/**
@@ -33,7 +33,7 @@ public class ManagerJob {
 	 * @param tupleIA2 Tupla com os índices para a IA 2.
 	 */
 	 
-	public void configureArq(String tupleIA1, String tupleIA2){
+	public void configureArq(String tupleIA1, String tupleIA2, Integer match){
 		//altero o arquivo com a nova configuração.
 		String arquivo = System.getProperty("user.dir").concat("/aControlStartJob.sh");
 		
@@ -44,6 +44,7 @@ public class ManagerJob {
 			gravarArq.println(linha2);
 			gravarArq.println("i="+tupleIA1);
 			gravarArq.println("t="+tupleIA2);
+			gravarArq.println("m="+match);
 			gravarArq.println(ultimaLinha);
 			
 			gravarArq.flush();

@@ -18,6 +18,4 @@ echo "taskset -cp $CPU_LIST $PID_THIS_SHELL"
 #https://linux.die.net/man/1/taskset
 taskset -cp $CPU_LIST $PID_THIS_SHELL
 
-/data/apps/java/jre1.8.0_66/bin/java -Xmx5g -jar microRTS.jar ${TUPIA1} ${TUPIA2} >> ${RESULTS}/'Eval_'${TUPIA1}_${TUPIA2}.txt
-
-
+/data/apps/java/jre1.8.0_66/bin/java -Xmx5g -jar microRTS.jar ${TUPIA1} ${TUPIA2} >> ${RESULTS}/'Eval_'${TUPIA1}_${TUPIA2}_${ID}.txt

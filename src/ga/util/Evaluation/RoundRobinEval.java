@@ -14,7 +14,7 @@ import util.ManagerJob;
 
 public class RoundRobinEval implements RatePopulation{
 	//CONSTANTES
-	private static final int TOTAL_PARTIDAS_ROUND = 4;
+	private static final int TOTAL_PARTIDAS_ROUND = 3;
 	
 	//Classes de controle do cluster
 	private ManagerJob manager = new ManagerJob();
@@ -139,7 +139,7 @@ public class RoundRobinEval implements RatePopulation{
 						System.out.println("IA1 = "+ convertTuple(cIA1)+ "  IA2 = "+ convertTuple(cIA2));
 
 						//enviar jobs ao cluster
-						manager.configureArq( convertTuple(cIA1), convertTuple(cIA2) );
+						manager.configureArq( convertTuple(cIA1), convertTuple(cIA2), i );
 						shell.executeScript("/storage1/dados/es91661/ExecAIGA/aControlStartJob.sh");
 
 						try {

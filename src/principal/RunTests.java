@@ -6,6 +6,7 @@ import ga.util.RunGA;
 import ga.util.Evaluation.RatePopulation;
 import ga.util.Evaluation.RoundRobinEval;
 
+@SuppressWarnings("unused")
 public class RunTests {
 
 	public static void main(String[] args) {
@@ -20,7 +21,6 @@ public class RunTests {
 		
 		//################################################################33
 		//sandBOX
-		/* Testes Rubens validação do RoundRobin
 		Population p = Population.getInitialPopulation(ConfigurationsGA.SIZE_POPULATION);
 		p.print();
 		RatePopulation fEval = new RoundRobinEval();
@@ -30,10 +30,11 @@ public class RunTests {
 		
 		System.out.println("\n Pos avaliação");
 		p.printWithValue();
-		*/
+		
 		//################################################################33
 	
-		
+		/*
+		 * remover bloco de comentário
 		//aplicando o Algoritmo Genético
 		//criei uma classe para controlar a execução do GA.
 		RunGA ga = new RunGA();
@@ -48,7 +49,7 @@ public class RunTests {
 		
 		//Fase 6 - mostrar os mais aptos na população final
 		 
-		
+		 */
 	}
 
 }
