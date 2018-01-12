@@ -93,6 +93,50 @@ public class LeitorLog {
 
 		return results;
 	}
+	
+	public void removeNoResults(){
+		ArrayList<String> tempCaminhos = new ArrayList<String>();
+		File diretorio = new File(pathStruture);
+		buscarParcial(diretorio, ".txt", tempCaminhos);
+		
+		for (String path : tempCaminhos) {
+			if(!hasResult(path)){
+				File rem = new File(path);
+				rem.deleteOnExit();
+			}
+		}
+	}
+
+
+	private boolean hasResult(String path) {
+		boolean winnerFounded = false;
+		String linha;
+		File arqTour = new File(path);
+
+		try {
+			FileReader arq = new FileReader(arqTour);
+			BufferedReader learArq = new BufferedReader(arq);
+
+			linha = learArq.readLine();
+			
+			while(linha != null){
+				
+				if(linha.contains("Game Over")){
+					winnerFounded = true;
+				}
+				
+									
+				linha = learArq.readLine();
+			}
+			arq.close();
+
+		} catch (Exception e) {
+			System.err.printf("Erro na leitura dos arquivos");
+			System.out.println(e.toString());
+		}
+		 
+		return winnerFounded;
+	}
 
 
 	/**

@@ -14,7 +14,7 @@ import util.ManagerJob;
 
 public class RoundRobinEval implements RatePopulation{
 	//CONSTANTES
-	private static final int TOTAL_PARTIDAS_ROUND = 3;
+	private static final int TOTAL_PARTIDAS_ROUND = 2;
 	
 	//Classes de controle do cluster
 	private ManagerJob manager = new ManagerJob();
@@ -30,6 +30,7 @@ public class RoundRobinEval implements RatePopulation{
 	public Population evalPopulation(Population population) {
 		//limpa os valores existentes na population
 		population.clearValueChromosomes();
+		
 		//executa os confrontos
 		runBattles(population);
 		
@@ -37,6 +38,9 @@ public class RoundRobinEval implements RatePopulation{
 		controllExecute();
 
 		//validar se todos executaram adequadamente
+				
+		//remove qualquer aquivo que não possua um vencedor
+		removeLogsEmpty();
 
 		//ler resultados
 		ArrayList<EvalResult> resultados = lerResultados();
@@ -47,6 +51,11 @@ public class RoundRobinEval implements RatePopulation{
 	}
 	
 	
+	private void removeLogsEmpty() {
+		LeitorLog log = new LeitorLog();
+		log.removeNoResults();
+	}
+
 	public Population updatePopulationValue(ArrayList<EvalResult> results, Population pop){
 		ArrayList<EvalResult> resultsNoDraw = removeDraw(results);
 		
