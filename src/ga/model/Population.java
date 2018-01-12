@@ -58,6 +58,15 @@ public class Population {
 		System.out.println("-- Population --");
 	}
 	
+	/**
+	 * Função que zera os valores das avaliações dos Chromossomos.
+	 */
+	public void clearValueChromosomes(){
+		for(Chromosome chromo : this.Chromosomes.keySet()){
+			this.Chromosomes.put(chromo, BigDecimal.ZERO);
+		}
+	}
+	
 	//static methods
 	
 	/**

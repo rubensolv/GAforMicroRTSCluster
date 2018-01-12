@@ -28,7 +28,8 @@ public class RoundRobinEval implements RatePopulation{
 
 	@Override
 	public Population evalPopulation(Population population) {
-
+		//limpa os valores existentes na population
+		population.clearValueChromosomes();
 		//executa os confrontos
 		runBattles(population);
 		
