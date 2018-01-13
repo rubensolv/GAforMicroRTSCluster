@@ -81,7 +81,8 @@ public class Population {
 		for (int i = 0; i < size; i++) {
 			//gerar o novo cromossomo com base no tamanho
 			tChom = new Chromosome();
-			for (int j = 0; j < ConfigurationsGA.SIZE_CHROMOSOME; j++) {
+			int sizeCh=rand.nextInt(ConfigurationsGA.SIZE_CHROMOSOME)+1;
+			for (int j = 0; j < sizeCh; j++) {
 				tChom.addGene(rand.nextInt(ConfigurationsGA.QTD_SCRIPTS));
 			}
 			newChromosomes.put(tChom, BigDecimal.ZERO);
