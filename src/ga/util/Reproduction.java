@@ -3,10 +3,7 @@ package ga.util;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -76,6 +73,7 @@ public class Reproduction {
 		return newGeneration;
 	}
 
+	@SuppressWarnings("unchecked")
 	public Population mutation(Population p)
 	{
 		//This method replace each gene with a random script with a probability of 10%

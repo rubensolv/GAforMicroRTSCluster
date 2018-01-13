@@ -31,13 +31,12 @@ public class LeitorLog {
 		ArrayList<EvalResult> choices = lerArquivos(tempCaminhos); 
 		
 		//remover arquivos
-		//removerArquivos(tempCaminhos);
+		removerArquivos(tempCaminhos);
 		
 		return choices;
 		
 	}
 	
-	@SuppressWarnings("unused")
 	private void removerArquivos(ArrayList<String> tempCaminhos){
 		File file;
 		for (String string : tempCaminhos) {
