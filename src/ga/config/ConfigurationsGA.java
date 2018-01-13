@@ -16,5 +16,5 @@ public final class ConfigurationsGA {
 	//tamanho fixo do k do torneio
 	public final static int K_TOURNMENT = 2;
 	//tamanho fixo dos pais para crossover
-	public final static int SIZE_PARENTSFORCROSSOVER = 2;
+	public final static int SIZE_PARENTSFORCROSSOVER = 3;
 }
