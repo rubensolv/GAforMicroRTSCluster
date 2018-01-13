@@ -84,7 +84,7 @@ public class Reproduction {
 			newCh.setGenes((ArrayList<Integer>) c.getGenes().clone());
 			for(int i=0; i<newCh.getGenes().size();i++)
 			{
-				double mutatePercent = 0.1;
+				double mutatePercent = ConfigurationsGA.MUTATION_RATE;
 				boolean m = rand.nextFloat() <= mutatePercent;
 
 				if(m)
