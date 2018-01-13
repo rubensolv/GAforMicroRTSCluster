@@ -17,4 +17,6 @@ public final class ConfigurationsGA {
 	public final static int K_TOURNMENT = 2;
 	//tamanho fixo dos pais para crossover
 	public final static int SIZE_PARENTSFORCROSSOVER = 3;
+	//taxa mutacao
+	public final static double MUTATION_RATE = 0.01;
 }
