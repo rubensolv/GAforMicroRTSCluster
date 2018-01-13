@@ -1,5 +1,11 @@
 package ga.util;
 
+import java.math.BigDecimal;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import ga.model.Chromosome;
 import ga.model.Population;
 
 public class Selection {
@@ -11,7 +17,23 @@ public class Selection {
 	 * @return Population com os devidos novos cromossomos.
 	 */
 	public Population applySelection(Population populacaoInicial){
-		Population newPopulation = new Population();
+		
+		
+		
+		PreSelection ps=new PreSelection(populacaoInicial);			
+		List<Map.Entry<Chromosome, BigDecimal>> parents=ps.Tournament();		
+		
+		
+		Reproduction rp=new Reproduction(parents);
+		Population newPopulation=rp.UniformCrossover();
+		newPopulation=rp.mutation(newPopulation);
+		
+		HashMap<Chromosome, BigDecimal> elite=(HashMap<Chromosome, BigDecimal>)ps.sortByValue(populacaoInicial.getChromosomes());
+		HashMap<Chromosome, BigDecimal> chromosomesNewPopulation=new HashMap<Chromosome, BigDecimal>();
+		chromosomesNewPopulation.putAll(newPopulation.getChromosomes());
+		chromosomesNewPopulation.putAll(elite);
+		
+		newPopulation.setChromosomes(chromosomesNewPopulation);
 		
 		
 		
