@@ -4,7 +4,9 @@ import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
+import ga.config.ConfigurationsGA;
 import ga.model.Chromosome;
 import ga.model.Population;
 
@@ -16,42 +18,55 @@ public class Selection {
 	 * @param populacaoInicial que será utilizada para aplicarmos as alterações.
 	 * @return Population com os devidos novos cromossomos.
 	 */
+	
+	static Random rand = new Random();
+	
 	public Population applySelection(Population populacaoInicial){
 
 
-		System.out.println("printing the initial population");
+		//System.out.println("printing the initial population");
 		printMap(populacaoInicial.getChromosomes());
 
-		//class preselection have the methods for selecting parents
+		
+		//class preselection have the methods for selecting parents according the tournament
 		PreSelection ps=new PreSelection(populacaoInicial);			
 		List<Map.Entry<Chromosome, BigDecimal>> parents=ps.Tournament();		
-		System.out.println("printing the parents selected for tournment ");
+		//System.out.println("printing the parents selected for reproduction ");
 		printList(parents);
 
-		//Class Reproduction have the methods for getting new population according the parents
+		
+		//Class Reproduction have the methods for getting new population according the parents obtained before
 		//using crossover and mutation
 		Reproduction rp=new Reproduction(parents);
 		Population newPopulation=rp.UniformCrossover();
-		System.out.println("printing the new population after crossover");
+		//System.out.println("printing the new population after crossover");
 		printMap(newPopulation.getChromosomes());
 		newPopulation=rp.mutation(newPopulation);
-		System.out.println("printing the new population after mutation");
+		//System.out.println("printing the new population after mutation");
 		printMap(newPopulation.getChromosomes());
 
-		//in elite is saved the best guys from the last population in order
-		//to complete the population with the new guys
+		
+		//in elite is saved the best guys from the last population
 		HashMap<Chromosome, BigDecimal> elite=(HashMap<Chromosome, BigDecimal>)ps.sortByValue(populacaoInicial.getChromosomes());
-		System.out.println("printing elite last population");
+		//System.out.println("printing elite last population");
 		printMap(elite);
 
-		//joining elite and new sons in chromosomesNewPopulation
+		
+		//joining elite and new sons in chromosomesNewPopulation, 
 		HashMap<Chromosome, BigDecimal> chromosomesNewPopulation=new HashMap<Chromosome, BigDecimal>();
 		chromosomesNewPopulation.putAll(newPopulation.getChromosomes());
 		chromosomesNewPopulation.putAll(elite);
-		System.out.println("printing complete new population (elite+new population)");
+		//System.out.println("printing complete new population (elite+new population)");
+		printMap(chromosomesNewPopulation);
+		newPopulation.setChromosomes(chromosomesNewPopulation);
+		
+		
+		//if the number of the new pop is less than the initial pop, fill with random elements
+		newPopulation=fillWithRandom(newPopulation);
+		//System.out.println("printing complete new population with new random elements If that's the case");
 		printMap(chromosomesNewPopulation);
 
-		newPopulation.setChromosomes(chromosomesNewPopulation);
+		
 		return newPopulation;
 	}
 
@@ -75,6 +90,19 @@ public class Selection {
 			System.out.println(key + " " + value);
 
 		} 
+	}
+	public Population fillWithRandom(Population p)
+	{
+		while(p.getChromosomes().size()<ConfigurationsGA.SIZE_POPULATION)
+		{
+			Chromosome tChom = new Chromosome();
+			int sizeCh=rand.nextInt(ConfigurationsGA.SIZE_CHROMOSOME)+1;
+			for (int j = 0; j < sizeCh; j++) {
+				tChom.addGene(rand.nextInt(ConfigurationsGA.QTD_SCRIPTS));
+			}
+			p.getChromosomes().put(tChom, BigDecimal.ZERO);			
+		}
+		return p;
 	}
 
 }

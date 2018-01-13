@@ -25,7 +25,7 @@ public class PreSelection {
 	}
 	public List<Map.Entry<Chromosome, BigDecimal>> Tournament()
 	{
-		//we eant select some parents (list parents) from all the population (listCandidates)
+		//we want to select some parents (list parents) from all the population (listCandidates)
 		int parentsAdded=0;
 		List<Map.Entry<Chromosome, BigDecimal>> listParents= new ArrayList();
 		List<Map.Entry<Chromosome, BigDecimal>> listCandidates = new ArrayList<Map.Entry<Chromosome, BigDecimal>>(p.getChromosomes().entrySet());

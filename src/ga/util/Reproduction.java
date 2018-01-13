@@ -28,7 +28,7 @@ public class Reproduction {
 	{
 		Population newGeneration;
 		HashMap<Chromosome, BigDecimal> newChromosomes =new HashMap<Chromosome, BigDecimal>();		
-		while(newChromosomes.size()<=ConfigurationsGA.SIZE_POPULATION-ConfigurationsGA.SIZE_ELITE)
+		while(newChromosomes.size()<ConfigurationsGA.SIZE_POPULATION-ConfigurationsGA.SIZE_ELITE)
 		{
 			//here we shuffle the list of parents in order to select always two different parents to reproduce
 			Collections.shuffle(parents);
@@ -57,7 +57,8 @@ public class Reproduction {
 				}
 			}
 			//The next method is just for avoiding infinite loops, adding a random element if
-			//one with the same key was already added
+			//one with the same key was already added (this can happen because sometimes the resulting
+			//element has the same KEY, and produce that the size of the map be always the same) 
 			if(newChromosomes.containsKey(child))
 			{
 				Chromosome tChom = new Chromosome();
