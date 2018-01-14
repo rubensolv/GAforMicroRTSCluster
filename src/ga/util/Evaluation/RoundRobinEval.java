@@ -14,7 +14,7 @@ import util.ManagerJob;
 
 public class RoundRobinEval implements RatePopulation{
 	//CONSTANTES
-	private static final int TOTAL_PARTIDAS_ROUND = 2;
+	private static final int TOTAL_PARTIDAS_ROUND = 4;
 	
 	//Classes de controle do cluster
 	private ManagerJob manager = new ManagerJob();
@@ -161,6 +161,7 @@ public class RoundRobinEval implements RatePopulation{
 						//controla o total de jobs em execução
 						try {
 							while( Integer.valueOf(shell.executeCommand("echo $(qselect -u es91661 | wc -l)").trim()) > ConfigurationsGA.NUMBER_JOBS ){
+								System.gc();
 								Thread.sleep(30000);
 							}
 						} catch (NumberFormatException | IOException | InterruptedException e) {

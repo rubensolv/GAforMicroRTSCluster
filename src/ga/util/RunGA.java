@@ -12,6 +12,7 @@ public class RunGA {
 	
 	private Population population;
 	private Instant timeInicial;
+	private int generations;
 	
 	/**
 	 * Este metodo aplicará todas as fases do processo de um algoritmo Genético
@@ -24,9 +25,9 @@ public class RunGA {
 		//Fase 2 = avalia a população
 		population = evalFunction.evalPopulation(population); 
 		
-		resetStartTime();
+		resetControls();
 		//Fase 3 = critério de parada
-		while(hasTime()){
+		while(continueProcess()){
 			
 			//Fase 4 = Seleção (Aplicar Cruzamento e Mutação)
 			Selection selecao = new Selection();
@@ -34,17 +35,47 @@ public class RunGA {
 			
 			//Repete-se Fase 2 = Avaliação da população
 			population = evalFunction.evalPopulation(population);
+			
+			//atualiza a geração
+			updateGeneration();
 		}
 		
 		return population;
 	}
 	
+	private void updateGeneration(){
+		this.generations++;
+	}
 	
+	private boolean continueProcess() {
+		switch (ConfigurationsGA.TYPE_CONTROL) {
+		case 0:
+			return hasTime();
+			
+		case 1:
+			return hasGeneration();
+				
+		default:
+			return false;
+		}
+		
+	}
+
+
+	private boolean hasGeneration() {
+		if(this.generations < ConfigurationsGA.QTD_GENERATIONS){
+			return true;
+		}
+		return false;
+	}
+
+
 	/**
 	 * Função que inicia o contador de tempo para o critério de parada
 	 */
-	protected void resetStartTime(){
+	protected void resetControls(){
 		this.timeInicial = Instant.now();
+		this.generations = 0;
 	}
 	
 	protected boolean hasTime(){
