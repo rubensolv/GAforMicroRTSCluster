@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#PBS -N pgs_old
+#PBS -N bFixedJob
 #PBS -l mem=4mb,ncpus=4
 #PBS -l walltime=100:02:00
 module load java-oracle/jdk1.8.0_65
