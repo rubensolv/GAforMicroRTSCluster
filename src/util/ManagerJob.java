@@ -23,8 +23,8 @@ public class ManagerJob {
 	
 	public ManagerJob(){
 		linha1 = "#!/bin/bash";
-		linha2 = "cd /storage1/dados/es91661/ExecAIGA";
-		ultimaLinha = "(qsub -l nodes=1:ppn=5,mem=5gb -v TUPIA1=$i,TUPIA2=$t,ID=$m bFixedJob.sh) &";
+		linha2 = "cd /mnt/nfs/home/ludwinpe/Julian/ExecAIGA/";
+		ultimaLinha = "(qsub -v TUPIA1=$i,TUPIA2=$t,ID=$m bFixedJob.sh) &";
 	}
 	
 	/**
