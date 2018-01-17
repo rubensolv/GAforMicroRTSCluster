@@ -1,12 +1,10 @@
 package principal;
 
-import ga.config.ConfigurationsGA;
 import ga.model.Population;
 import ga.util.RunGA;
 import ga.util.Evaluation.RatePopulation;
 import ga.util.Evaluation.RoundRobinEval;
 
-@SuppressWarnings("unused")
 public class RunTests {
 
 	public static void main(String[] args) {

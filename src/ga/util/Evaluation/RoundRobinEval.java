@@ -150,7 +150,7 @@ public class RoundRobinEval implements RatePopulation{
 
 						//enviar jobs ao cluster
 						manager.configureArq( convertTuple(cIA1), convertTuple(cIA2), i );
-						shell.executeScript("/mnt/nfs/home/ludwinpe/Julian/ExecAIGA/aControlStartJob.sh");
+						shell.executeScript("/storage1/dados/es91661/ExecAIGA/aControlStartJob.sh");
 
 						try {
 							Thread.sleep(300);
@@ -160,7 +160,7 @@ public class RoundRobinEval implements RatePopulation{
 
 						//controla o total de jobs em execução
 						try {
-							while( Integer.valueOf(shell.executeCommand("echo $(qselect -u ludwinpe | wc -l)").trim()) > ConfigurationsGA.NUMBER_JOBS ){
+							while( Integer.valueOf(shell.executeCommand("echo $(qselect -u es91661 | wc -l)").trim()) > ConfigurationsGA.NUMBER_JOBS ){
 								System.gc();
 								Thread.sleep(30000);
 							}
